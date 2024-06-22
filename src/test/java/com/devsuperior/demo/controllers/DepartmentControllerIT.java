@@ -49,7 +49,7 @@ public class DepartmentControllerIT {
 		
 		ResultActions result =
 				mockMvc.perform(get("/departments")
-					.header("Authorization", "Bearer " + accessToken)
+					.header("Authorization", "Bearer " + accessToken) // Passar o Token do Usuário
 					.contentType(MediaType.APPLICATION_JSON));
 
 		result.andExpect(status().isOk());
@@ -57,7 +57,8 @@ public class DepartmentControllerIT {
 		result.andExpect(jsonPath("$[1].name").value("Sales"));
 		result.andExpect(jsonPath("$[2].name").value("Training"));
 	}
-	
+
+	// find All deve retornar todos os recursos classificados por nome quando o funcionário estiver conectado
 	@Test
 	public void findAllShouldReturnAllResourcesSortedByNameWhenEmployeeLogged() throws Exception {
 		
@@ -73,7 +74,8 @@ public class DepartmentControllerIT {
 		result.andExpect(jsonPath("$[1].name").value("Sales"));
 		result.andExpect(jsonPath("$[2].name").value("Training"));
 	}
-	
+
+	// find All deve retornar 401 Unauthorized quando usuário não estiver logado
 	@Test
 	public void findAllShouldReturn401WhenNoUserLogged() throws Exception {
 		

@@ -1,7 +1,7 @@
 package com.devsuperior.demo.controllers.exceptions;
 
 import java.time.Instant;
-
+// Erro padrão Que esta no POSTMAN
 public class StandardError {
 
     private Instant timestamp;

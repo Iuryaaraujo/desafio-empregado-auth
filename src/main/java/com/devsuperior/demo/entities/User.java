@@ -49,6 +49,7 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    // checkilist do sprind security
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

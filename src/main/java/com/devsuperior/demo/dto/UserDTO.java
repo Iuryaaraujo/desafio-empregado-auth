@@ -13,6 +13,10 @@ public class UserDTO {
     @Email(message = "Favor entrar com e-mail válido")
     private String email;
 
+    //não vamos usar aqui - somente no DTO para inserir novo usuário
+    //UserInsertDTO extends UserDTO
+    // private String password;
+
     Set<RoleDTO> roles = new HashSet<>();
     public UserDTO() {
     }

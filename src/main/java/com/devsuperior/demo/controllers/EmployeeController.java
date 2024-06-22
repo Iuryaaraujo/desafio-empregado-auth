@@ -35,7 +35,7 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(list);
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')") // somente adm poder acessar usuário
+	@PreAuthorize("hasRole('ROLE_ADMIN')") // somente adm poder acessar usuário e inserir
 	@PostMapping
 	public ResponseEntity<EmployeeDTO> insert(@Valid @RequestBody EmployeeDTO dto) {
 		dto = service.insert(dto);

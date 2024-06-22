@@ -1,5 +1,7 @@
 package com.devsuperior.demo.controllers.exceptions;
 
+// Mensagem de campo
+// para tratar as validações
 public class FieldMessage {
 
     private String fieldName;

@@ -45,7 +45,8 @@ public class EmployeeControllerIT {
 		adminUsername = "bob@gmail.com";
 		adminPassword = "123456";
 	}
-	
+
+	// insert deve retornar 403 Forbidden/Acesso negado quando o operador estiver logado
 	@Test
 	public void insertShouldReturn403WhenOperatorLogged() throws Exception {
 
@@ -64,6 +65,7 @@ public class EmployeeControllerIT {
 		result.andExpect(status().isForbidden());
 	}	
 
+	// insert deve retornar 401 quando usuário não tiver logado
 	@Test
 	public void insertShouldReturn401WhenNoUserLogged() throws Exception {
 
@@ -78,7 +80,8 @@ public class EmployeeControllerIT {
 		
 		result.andExpect(status().isUnauthorized());
 	}	
-	
+
+	// insert deve inserir recurso quando o administrador estiver logado e corrigir dados
 	@Test
 	public void insertShouldInsertResourceWhenAdminLoggedAndCorrectData() throws Exception {
 
@@ -99,8 +102,10 @@ public class EmployeeControllerIT {
 		result.andExpect(jsonPath("$.name").value("Joaquim"));
 		result.andExpect(jsonPath("$.email").value("joaquim@gmail.com"));
 		result.andExpect(jsonPath("$.departmentId").value(1L));
-	}	
+	}
 
+	// insert deve retornar 422 Unprocessable entity quando o administrador estiver logado e nome em branco
+	// teste de validação
 	@Test
 	public void insertShouldReturn422WhenAdminLoggedAndBlankName() throws Exception {
 
@@ -121,6 +126,8 @@ public class EmployeeControllerIT {
 		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
 	}
 
+	// insert deve retornar 422 Unprocessable entity quando o administrador estiver logado e e-mail inválido
+	// teste de validação
 	@Test
 	public void insertShouldReturn422WhenAdminLoggedAndInvalidEmail() throws Exception {
 
@@ -141,6 +148,8 @@ public class EmployeeControllerIT {
 		result.andExpect(jsonPath("$.errors[0].message").value("Email inválido"));
 	}
 
+	// insert deve retornar 422 Unprocessable entity quando o administrador estiver logado e departamento nulo
+	// teste de validação
 	@Test
 	public void insertShouldReturn422WhenAdminLoggedAndNullDepartment() throws Exception {
 

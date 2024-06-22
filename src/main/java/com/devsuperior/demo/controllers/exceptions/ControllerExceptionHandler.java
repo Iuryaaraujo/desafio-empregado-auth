@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.Instant;
 
-@ControllerAdvice
+@ControllerAdvice// Essa anotetion vai permite que intecepte algumas exceções da camada controller
+// Manipulador de Exceção de Recurso
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -41,6 +42,7 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(err);
     }
 
+    // tratando minhas exceção de validação
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ValidationError> validation(MethodArgumentNotValidException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;

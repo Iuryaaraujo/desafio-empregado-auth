@@ -2,7 +2,8 @@ package com.devsuperior.demo.controllers.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// Erro de validação
+// tudo q tem no StandardError vai ter no ValidationError
 public class ValidationError extends StandardError {
 
     private List<FieldMessage> errors = new ArrayList<>();
